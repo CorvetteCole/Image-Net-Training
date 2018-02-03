@@ -1,16 +1,17 @@
 import xml.etree.ElementTree as ET
 import os, sys
-directory = 'annotations'
+directory = 'test_annotations'
 
 path = os.path.join(os.getcwd(), directory)
 dirs = os.listdir(path)
-baseWidth = 640
-baseHeight = 480
+baseWidth = 320
+baseHeight = 240
 
 def resize():
 	for item in dirs:
-		if os.path.isfile(path+item):
-			tree = ET.parse(path+item)      
+		fullPath = os.path.join(path, item)
+		if os.path.isfile(fullPath):
+			tree = ET.parse(fullPath)      
 			size = tree.find('size')          # Get parent node from EXISTING tree
 			width = size.find('width').text
 			height = size.find('height').text
@@ -30,5 +31,5 @@ def resize():
 				if "y" in dimension.tag:
 					dimension.text = str(int(int(value) * heightRatio))
 				#print (dimension.tag, dimension.text)	
-			tree.write(path+item)
+			tree.write(fullPath)
 resize()
