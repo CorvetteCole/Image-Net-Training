@@ -1,3 +1,6 @@
+# ARCHIVED
+This repository contains some references for when I trained a neural network to recognize images. It is outdated and no longer very relevant
+
 # Boundary box labeler
 labelimg
 
